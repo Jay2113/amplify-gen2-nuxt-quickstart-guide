@@ -1,7 +1,7 @@
 import { Amplify } from "aws-amplify";
 import config from "~/amplifyconfiguration.json";
 
-// Amplify.configure() only needs to be called on the client side
+// configure the Amplify client library
 if (process.client) {
   Amplify.configure(config, { ssr: true });
 }

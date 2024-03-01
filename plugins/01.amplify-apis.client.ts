@@ -4,11 +4,17 @@ import {
   signIn,
   signOut,
 } from "aws-amplify/auth";
-import { list } from "aws-amplify/storage";
 import { generateClient } from "aws-amplify/data";
 import config from "../amplifyconfiguration.json";
 import type { Schema } from "@/amplify/data/resource";
+import { Amplify } from "aws-amplify";
 
+// configure the Amplify client library
+if (process.client) {
+  Amplify.configure(config, { ssr: true });
+}
+
+// generate your data client using the Schema from your backend
 const client = generateClient<Schema>();
 
 export default defineNuxtPlugin({
@@ -25,9 +31,6 @@ export default defineNuxtPlugin({
             fetchUserAttributes,
             signIn,
             signOut,
-          },
-          Storage: {
-            list,
           },
           GraphQL: {
             client,

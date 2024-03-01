@@ -11,9 +11,7 @@ import {
   fetchUserAttributes,
   getCurrentUser,
 } from "aws-amplify/auth/server";
-import { list } from "aws-amplify/storage/server";
 import { generateClient } from "aws-amplify/api/server";
-import type { ListPaginateInput } from "aws-amplify/storage";
 import type {
   LibraryOptions,
   FetchAuthSessionOptions,
@@ -187,14 +185,6 @@ export default defineNuxtPlugin({
                 amplifyConfig,
                 libraryOptions,
                 (contextSpec) => getCurrentUser(contextSpec)
-              ),
-          },
-          Storage: {
-            list: (input: ListPaginateInput) =>
-              runWithAmplifyServerContext(
-                amplifyConfig,
-                libraryOptions,
-                (contextSpec) => list(contextSpec, input)
               ),
           },
           GraphQL: {
