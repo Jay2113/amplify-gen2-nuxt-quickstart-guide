@@ -11,7 +11,7 @@ import {
   fetchUserAttributes,
   getCurrentUser,
 } from "aws-amplify/auth/server";
-import { generateClient } from "aws-amplify/api/server";
+import { generateClient } from "aws-amplify/data/server";
 import type {
   LibraryOptions,
   FetchAuthSessionOptions,
